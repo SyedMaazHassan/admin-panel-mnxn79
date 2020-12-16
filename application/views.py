@@ -13,7 +13,7 @@ from django.contrib import messages
 def index(request):
     if not request.user.is_authenticated:
         return redirect("login")
-    return render(request, 'main.html')
+    return redirect('admin-panel')
 
 
 # function for signup
@@ -120,7 +120,7 @@ def surveyform(request):
                     pass
             x= list(map(func1,data['pages'][0]['questions']))
             print(x)
-    return render(request,'surveyform.html')
+    return redirect('admin-panel')
 
 # display on the admin page 
 class SurveyList(generic.ListView):
@@ -236,6 +236,6 @@ def checkresponses(request,**kwargs):
             final_ans.append(my_function(headers,x['data'][i]['href'],question_value_list,out2,kwargs['pk']))
 
     except:
-        render(request,'admin-panel/tables.html')
-    return render(request,'admin-panel/tables.html',{'ctx':final_ans}) 
+        render(request,'admin-panel/tables.html')    
+    return render(request,'admin-panel/tables.html',{'ctx':final_ans,'name':SurveyInfo.objects.get(pk=kwargs['pk'])}) 
 

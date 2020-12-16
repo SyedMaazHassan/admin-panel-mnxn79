@@ -1,5 +1,8 @@
 {% load static %}
-
+{% load bootstrap4%}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_jquery %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +15,17 @@
     <meta name="author" content="">
 
     <title>SB Admin 2 - Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
     <!-- Custom fonts for this template-->
     <link href="{% static 'assets/v/v/v/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link
@@ -24,7 +37,11 @@
 
 </head>
 
+
 <body id="page-top">
+
+
+
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -45,7 +62,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{% url 'admin-panel' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -60,96 +77,44 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" style="cursor: pointer;"
+                 >
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span data-target="#logoutModal" data-toggle="modal">Add survey</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="{% url 'logout' %}" 
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <span>Logout</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
+
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
+
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
+
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+
 
             <!-- Sidebar Message -->
-            <div class="sidebar-card">
-                <img class="sidebar-card-illustration mb-2" src="{% static 'assets/img/undraw_rocket.svg' %}" alt="">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -352,7 +317,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="{% url 'logout' %}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -365,19 +330,20 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
+                {% block content %}
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="{% url 'add-survey' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i>Add survey </a>
+                        
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
+                        {%if survey_lists %}
                         {% for item in survey_lists %}
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -397,6 +363,11 @@
                             </div>
                         </div>
                         {% endfor %}
+                        {% else %}
+                        <div class="alert alert-success text-center col-xl-12 col-md-6 mb-4" role="alert">
+                            You have not added any survey!!
+                        </div>
+                        {% endif %}
                         <!-- Earnings (Monthly) Card Example -->
                         <!-- <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
@@ -443,24 +414,7 @@
                                 </div>
                             </div>
                         </div> -->
-
-                        <!-- Pending Requests Card Example -->
-                        <!-- <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --> 
+ 
                     </div>
 
                     <!-- Content Row -->
@@ -695,6 +649,7 @@
                     </div>
 
                 </div>
+                {% endblock %}
                 <!-- /.container-fluid -->
 
             </div>
@@ -727,20 +682,43 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h3 class="modal-title" >
+                        Add Survey
+                    </h3>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                <div class="modal-body">
+                    <form action="{% url 'add-survey' %}" method="POST" >
+                        {% csrf_token %}
+                        <input type="text" required name='survey_name' class='form-control' placeholder="Survey Name">
+                        <input type="text" required name='token' class='form-control my-2' placeholder="Token" >
+                        <input type="number" required name='id' class='form-control' placeholder="Survey Unique id">
+                        <p id="error_log"></p>
+                        <button class="btn btn-info w-100 mt-2">
+                            Add survey
+                        </button>
+                    </form>                    
                 </div>
+
             </div>
         </div>
     </div>
+    <script>
+        let msg = `{%for msg in messages%}{{msg}}{%endfor%}`;
+        const error = document.getElementById('error_log') 
+        if (msg!=''){
+            console.log('in here')
+            error.innerHTML = msg;
+            error.style.color = 'red';
+            $('#logoutModal').modal('show')
+            setTimeout(()=>{
+                error.innerHTML = ''
 
+            },3000)
+        }
+    </script>
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
