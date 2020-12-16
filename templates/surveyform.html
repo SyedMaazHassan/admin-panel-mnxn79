@@ -1,0 +1,32 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_jquery %}
+{% bootstrap_javascript %}
+<body>
+    <div class="container mt-2" style="width: 40%;">
+        <a href="{% url 'admin-panel' %}" class="btn btn-info mb-2">Admin panel</a>
+        <form action="" method="POST" class="border border-rounded p-5" >
+            {% csrf_token %}
+            <legend class="text-center">Add Survey</legend>
+            <input type="text" required name='survey_name'class='form-control' placeholder="Survey Name">
+            <input type="text" required name='token' placeholder="Token" class="form-control my-2">
+            <input type="number" required name='id' placeholder="Survey Unique id" class="form-control">
+            <p id="error_log"></p>
+            <button class="btn btn-info w-100 mt-2">
+                Add survey
+            </button>
+        </form>
+    </div>
+    <script>
+        let msg = `{%for msg in messages%}{{msg}}{%endfor%}`;
+        const error = document.getElementById('error_log') 
+        if (msg!=''){
+            error.innerHTML = msg;
+            error.style.color = 'red';
+            setTimeout(()=>{
+                error.innerHTML = ''
+            },3000)
+        }
+    </script>
+</body>
